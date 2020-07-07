@@ -13,7 +13,6 @@
 //
 // Definiciones y typedef
 //
-typedef unsigned char   uint8;
 
 
 //
@@ -23,12 +22,7 @@ typedef unsigned char   uint8;
 /**
  * Se encarga del control de las salidas del controlador con base a la
  * configuración de usuario y el tiempo actual.
-
- * @param void
-
- * @return void
-
- * @Notes
+ * 
  * Esta función se debe llamar a través de la interrupción de un timer 
  * programado con un tiempo de 1 segundo.
  */

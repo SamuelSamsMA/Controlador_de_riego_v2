@@ -6,6 +6,11 @@
 #include "RTC_EEPROM.h"
 #include <stdio.h>
 
+//
+// Variables globales
+//
+TIEMPO tiempo;
+
 
 //
 // Función de entrada
@@ -18,7 +23,6 @@ void main(void)
     // Initialize the device
     SYSTEM_Initialize();
 #pragma warning pop
-    
     
     LCD_iniciar();
     I2C_iniciar();
@@ -38,73 +42,47 @@ void main(void)
     WDTCONbits.SWDTEN = 1;
     T1CONbits.TMR1ON = 1;
     
-    /*
-     Primero se guardan 4 cadenas de texto en las páginas 1, 15, 30 y 31
-     de la memoria EEPROM 24C04
-     */
-    
-    char cadena1[16] = "Ejemplo";
-    char cadena2[16] = "creado por";
-    char cadena3[16] = "Samuel Munoz";
-    char cadena4[16] = "el 07/07/2020..";
-    
-    EEPROM_escribirPagina(1, cadena1);
-    EEPROM_escribirPagina(15, cadena2);
-    EEPROM_escribirPagina(30, cadena3);
-    EEPROM_escribirPagina(31, cadena4);
-    
-    char bufer[16] = {0};
+    // Lee el tiempo actual desde el RTC
+    RTC_leerHora(&tiempo);
+    RTC_leerFecha(&tiempo);
     
     while (1)
     {   // <editor-fold defaultstate="collapsed" desc="Ciclo infinito">
+        // Solo para medir el tiempo que tarda en ejecutar un ciclo while
+        LED_SetHigh();
         CLRWDT();
-        uint8 tecla = TECLADO_leerTecla();
+        uint8_t tecla = TECLADO_leerTecla();
         
-        /*
-         * Cada vez que el usuario presiona una de las siguientes teclas, el
-         * microcontrolador solicita el contenido de una página de la EEPROM
-         * e imprime los datos en la pantalla LCD.
-         * 
-         * Éste programa de ejemplo es para probar el buen funcionamiento del
-         * módulo I2C maestro y la comunicación con la Memoria EEPROM 24C04,
-         * los cuales son de vital importancia para el desarrollo del
-         * controlador de riego.
-         */
-        switch (tecla)
+        // Si se presiona la tecla F1 se reinicia la cuenta de tiempo del RTC.
+        if (tecla == TECLA_F1)
         {
-        case TECLA_1:
-            LCD_limpiarPantalla();
-            EEPROM_leerPagina(1, bufer);
-            printf("%s", bufer);
-            break;
-            
-        case TECLA_4:
-            LCD_limpiarPantalla();
-            EEPROM_leerPagina(15, bufer);
-            printf("%s", bufer);
-            break;
-            
-        case TECLA_7:
-            LCD_limpiarPantalla();
-            EEPROM_leerPagina(30, bufer);
-            printf("%s", bufer);
-            break;
-            
-        case TECLA_IZQ:
-            LCD_limpiarPantalla();
-            EEPROM_leerPagina(31, bufer);
-            printf("%s", bufer);
-            break;
+            tiempo.segundos = 0;
+            tiempo.minutos  = 0;
+            tiempo.horas    = 0;
+            tiempo.fecha    = 1;
+            tiempo.mes      = 1;
+            tiempo.anio     = 0;
+            RTC_escribirHora(&tiempo);
+            RTC_escribirFecha(&tiempo);
         }
         
-        /*
-         Una vez que se actualizó la pantalla de acuerdo a la tecla presionda,
-         se pone a dormir el procesador para ahorrar energía.
-         La interrupción de cada 1 segundo del timer o las interrupciones
-         del teclado, despertarán al procesador y continuara su trabajo
-         con la pantalla.
-         */
+        LCD_limpiarPantalla();
+        printf(" %02d:%02d:%02d  %02d/%02d/%02d",
+                tiempo.horas,
+                tiempo.minutos,
+                tiempo.segundos,
+                tiempo.fecha,
+                tiempo.mes,
+                tiempo.anio);
+        
+        LED_SetLow();
+//      Una vez que se actualizó la pantalla de acuerdo a la tecla presionda,
+//      se pone a dormir el procesador para ahorrar energía.
+//      La interrupción de cada 1 segundo del timer o las interrupciones
+//      del teclado despertarán al procesador y continuará su trabajo
+//      con la pantalla.
         SLEEP();
+        
         // </editor-fold>
     } /* while (1) */
 } /* void main(void) */
@@ -112,8 +90,10 @@ void main(void)
 
 void rutinaDeControl(void)
 {
-    // Aquí se agregará el código que administre las salidas del controlador
-
+    // Actualiza el tiempo actual desde el RTC
+    RTC_leerHora(&tiempo);
+    RTC_leerFecha(&tiempo);
+    
 } /* void rutinaDeControl(void) */
 
 
