@@ -1,17 +1,27 @@
 #include "mcc_generated_files/mcc.h"
 #include "LCD_4x20.h"
 #include "teclado_5x4.h"
+#include "I2C_lib.h"
 #include "main.h"
+#include "RTC_EEPROM.h"
 #include <stdio.h>
 
 
 //
 // Función de entrada
 //
-void main(void) {
+void main(void)
+{
+#pragma warning push
+#pragma warning disable 520
+#pragma warning disable 2053
     // Initialize the device
     SYSTEM_Initialize();
+#pragma warning pop
+    
+    
     LCD_iniciar();
+    I2C_iniciar();
     
     TMR1_SetInterruptHandler(rutinaDeControl);
     IOCCF0_SetInterruptHandler(TECLADO_interrupcion);
@@ -28,127 +38,62 @@ void main(void) {
     WDTCONbits.SWDTEN = 1;
     T1CONbits.TMR1ON = 1;
     
-    // Enciende el parpadeo del cursor de la pantalla
-    LCD_comando(LCD_cursorApaParpEnc);
+    /*
+     Primero se guardan 4 cadenas de texto en las páginas 1, 15, 30 y 31
+     de la memoria EEPROM 24C04
+     */
     
-    // Contadores de la posición del cursor con base inicial en 1
-    uint8 fila_i = 1, col_i = 1, enters = 0;
+    char cadena1[16] = "Ejemplo";
+    char cadena2[16] = "creado por";
+    char cadena3[16] = "Samuel Munoz";
+    char cadena4[16] = "el 07/07/2020..";
+    
+    EEPROM_escribirPagina(1, cadena1);
+    EEPROM_escribirPagina(15, cadena2);
+    EEPROM_escribirPagina(30, cadena3);
+    EEPROM_escribirPagina(31, cadena4);
+    
+    char bufer[16] = {0};
     
     while (1)
-    { // <editor-fold defaultstate="collapsed" desc="Ciclo infinito">
+    {   // <editor-fold defaultstate="collapsed" desc="Ciclo infinito">
+        CLRWDT();
         uint8 tecla = TECLADO_leerTecla();
         
-        CLRWDT();
-        
-        switch (tecla) {
-        
-            // Sube al cursor una fila, conservando la columna
-        case TECLA_ARRIBA:
-            if (fila_i > 1) {
-                fila_i--;
-                switch (fila_i) {
-                case 1: LCD_moverCursor(col_i - 1, L1); break;
-                case 2: LCD_moverCursor(col_i - 1, L2); break;
-                case 3: LCD_moverCursor(col_i - 1, L3); break;
-                case 4: LCD_moverCursor(col_i - 1, L4); break;
-                }
-            }
-            break;
-            
-            // Baja al cursor una fila, conservando la columna
-        case TECLA_ABAJO:
-            if (fila_i < 4) {
-                fila_i++;
-                switch (fila_i) {
-                case 1: LCD_moverCursor(col_i - 1, L1); break;
-                case 2: LCD_moverCursor(col_i - 1, L2); break;
-                case 3: LCD_moverCursor(col_i - 1, L3); break;
-                case 4: LCD_moverCursor(col_i - 1, L4); break;
-                }
-            }
-            break;
-            
-            // Imprime el número de Enters que se han presionado.
-            // El contador se reinicia al llegar a 10.
-        case TECLA_ENT:
-            printf("%d", ++enters);
-            if (enters == 9)
-                enters = 0;
-            col_i++;
-            break;
-            
-            // Mueve al cursor un espacio a la derecha sobre la misma fila
-        case TECLA_DER:
-            if (col_i < 20) {
-                col_i++;
-                switch (fila_i) {
-                case 1: LCD_moverCursor(col_i - 1, L1); break;
-                case 2: LCD_moverCursor(col_i - 1, L2); break;
-                case 3: LCD_moverCursor(col_i - 1, L3); break;
-                case 4: LCD_moverCursor(col_i - 1, L4); break;
-                }
-            }
-            break;
-            
-            // Mueve al cursor un espacio a la izquierda sobre la misma fila
-        case TECLA_IZQ:
-            if (col_i > 1) {
-                col_i--;
-                switch (fila_i) {
-                case 1: LCD_moverCursor(col_i - 1, L1); break;
-                case 2: LCD_moverCursor(col_i - 1, L2); break;
-                case 3: LCD_moverCursor(col_i - 1, L3); break;
-                case 4: LCD_moverCursor(col_i - 1, L4); break;
-                }
-            }
-            break;
-            
-            // Limpia toda la pantalla y regresa el cursor a la pos. 1,1
-        case TECLA_ESC:
+        /*
+         * Cada vez que el usuario presiona una de las siguientes teclas, el
+         * microcontrolador solicita el contenido de una página de la EEPROM
+         * e imprime los datos en la pantalla LCD.
+         * 
+         * Éste programa de ejemplo es para probar el buen funcionamiento del
+         * módulo I2C maestro y la comunicación con la Memoria EEPROM 24C04,
+         * los cuales son de vital importancia para el desarrollo del
+         * controlador de riego.
+         */
+        switch (tecla)
+        {
+        case TECLA_1:
             LCD_limpiarPantalla();
-            fila_i = 1;
-            col_i = 1;
+            EEPROM_leerPagina(1, bufer);
+            printf("%s", bufer);
             break;
             
-            // Imprime el número de tecla en la pos. actual del cursor
-        case TECLA_0: case TECLA_1: case TECLA_2: case TECLA_3: case TECLA_4:
-        case TECLA_5: case TECLA_6: case TECLA_7: case TECLA_8: case TECLA_9:
-            LCD_caracter(tecla + 0x30);
-            col_i++;
+        case TECLA_4:
+            LCD_limpiarPantalla();
+            EEPROM_leerPagina(15, bufer);
+            printf("%s", bufer);
             break;
             
-            // Imprime el símbolo numeral en la pos. actual del cursor
-        case TECLA_NUMERAL:
-            LCD_caracter('#');
-            col_i++;
+        case TECLA_7:
+            LCD_limpiarPantalla();
+            EEPROM_leerPagina(30, bufer);
+            printf("%s", bufer);
             break;
             
-            // Imprime el símbolo asterisco en la pos. actual del cursor
-        case TECLA_AST:
-            LCD_caracter('*');
-            col_i++;
-            break;
-            
-            // Lleva al cursor a la columna 1 de la fila actual
-        case TECLA_F1:
-            col_i = 1;
-            switch (fila_i) {
-                case 1: LCD_moverCursor(col_i - 1, L1); break;
-                case 2: LCD_moverCursor(col_i - 1, L2); break;
-                case 3: LCD_moverCursor(col_i - 1, L3); break;
-                case 4: LCD_moverCursor(col_i - 1, L4); break;
-                }
-            break;
-            
-            // Lleva al cursor a la columna 20 de la fila actual
-        case TECLA_F2:
-            col_i = 20;
-            switch (fila_i) {
-                case 1: LCD_moverCursor(col_i - 1, L1); break;
-                case 2: LCD_moverCursor(col_i - 1, L2); break;
-                case 3: LCD_moverCursor(col_i - 1, L3); break;
-                case 4: LCD_moverCursor(col_i - 1, L4); break;
-                }
+        case TECLA_IZQ:
+            LCD_limpiarPantalla();
+            EEPROM_leerPagina(31, bufer);
+            printf("%s", bufer);
             break;
         }
         
@@ -161,13 +106,15 @@ void main(void) {
          */
         SLEEP();
         // </editor-fold>
-    }
-}
+    } /* while (1) */
+} /* void main(void) */
 
 
-void rutinaDeControl(void) {
+void rutinaDeControl(void)
+{
     // Aquí se agregará el código que administre las salidas del controlador
-}
+
+} /* void rutinaDeControl(void) */
 
 
 // Ésta función es necesaria para el funcionamiento de printf y se ha

@@ -82,7 +82,7 @@ void PIN_MANAGER_Initialize(void)
     */
     ANSELD = 0xE0;
     ANSELC = 0x00;
-    ANSELB = 0x3F;
+    ANSELB = 0x3C;
     ANSELE = 0x07;
     ANSELA = 0x3E;
 
@@ -162,6 +162,11 @@ void PIN_MANAGER_Initialize(void)
     // Enable IOCI interrupt 
     INTCONbits.IOCIE = 1; 
     
+	
+    SSPDATPPS = 0x09;   //RB1->MSSP:SDA;    
+    RB1PPS = 0x22;   //RB1->MSSP:SDA;    
+    RB0PPS = 0x21;   //RB0->MSSP:SCL;    
+    SSPCLKPPS = 0x08;   //RB0->MSSP:SCL;    
 }
   
 void PIN_MANAGER_IOC(void)

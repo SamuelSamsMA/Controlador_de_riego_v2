@@ -14,7 +14,7 @@
 
 
 //
-// Definiiones generales
+// Definiciones generales
 //
 #define   TECLA_0       0
 #define   TECLA_1       1

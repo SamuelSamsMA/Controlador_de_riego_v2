@@ -61,7 +61,7 @@ void TECLADO_interrupcion(void)
     }
 }
 
-bool obtenerColumna (uint8_t columna)
+static bool obtenerColumna (uint8_t columna)
 {
     bool valor = false;
     
