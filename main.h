@@ -13,7 +13,12 @@
 //
 // Definiciones y typedef
 //
+#define NUMERO_DE_ZONAS     3
 
+typedef struct {
+    uint8_t num_riegos;
+    uint24_t tiempo_total_riego;
+} INFO_RIEGO;
 
 //
 // Prototipos de funciones
@@ -27,6 +32,15 @@
  * programado con un tiempo de 1 segundo.
  */
 void rutinaDeControl(void);
+
+
+/**
+ * Convierte los segundos del día en su equivalente de horas, minutos y segundos.
+ * 
+ * @param tseg  Segundos totales del día
+ * @param buf   Vector para guardar los segundos, minutos y horas por separado.
+ */
+void segundos_a_hhmmss(uint24_t tseg, uint8_t* buf);
 
 #endif	/* XC_MAIN_H */
 

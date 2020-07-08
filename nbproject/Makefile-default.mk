@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=mcc_generated_files/examples/i2c_master_example.c mcc_generated_files/tmr1.c mcc_generated_files/device_config.c mcc_generated_files/interrupt_manager.c mcc_generated_files/mcc.c mcc_generated_files/pin_manager.c mcc_generated_files/i2c_master.c main.c LCD_4x20.c teclado_5x4.c I2C_lib.c RTC_EEPROM.c
+SOURCEFILES_QUOTED_IF_SPACED=mcc_generated_files/examples/i2c_master_example.c mcc_generated_files/tmr1.c mcc_generated_files/device_config.c mcc_generated_files/interrupt_manager.c mcc_generated_files/mcc.c mcc_generated_files/pin_manager.c mcc_generated_files/i2c_master.c main.c LCD_4x20.c teclado_5x4.c I2C_lib.c RTC_EEPROM.c menus.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/mcc_generated_files/examples/i2c_master_example.p1 ${OBJECTDIR}/mcc_generated_files/tmr1.p1 ${OBJECTDIR}/mcc_generated_files/device_config.p1 ${OBJECTDIR}/mcc_generated_files/interrupt_manager.p1 ${OBJECTDIR}/mcc_generated_files/mcc.p1 ${OBJECTDIR}/mcc_generated_files/pin_manager.p1 ${OBJECTDIR}/mcc_generated_files/i2c_master.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/LCD_4x20.p1 ${OBJECTDIR}/teclado_5x4.p1 ${OBJECTDIR}/I2C_lib.p1 ${OBJECTDIR}/RTC_EEPROM.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/mcc_generated_files/examples/i2c_master_example.p1.d ${OBJECTDIR}/mcc_generated_files/tmr1.p1.d ${OBJECTDIR}/mcc_generated_files/device_config.p1.d ${OBJECTDIR}/mcc_generated_files/interrupt_manager.p1.d ${OBJECTDIR}/mcc_generated_files/mcc.p1.d ${OBJECTDIR}/mcc_generated_files/pin_manager.p1.d ${OBJECTDIR}/mcc_generated_files/i2c_master.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/LCD_4x20.p1.d ${OBJECTDIR}/teclado_5x4.p1.d ${OBJECTDIR}/I2C_lib.p1.d ${OBJECTDIR}/RTC_EEPROM.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/mcc_generated_files/examples/i2c_master_example.p1 ${OBJECTDIR}/mcc_generated_files/tmr1.p1 ${OBJECTDIR}/mcc_generated_files/device_config.p1 ${OBJECTDIR}/mcc_generated_files/interrupt_manager.p1 ${OBJECTDIR}/mcc_generated_files/mcc.p1 ${OBJECTDIR}/mcc_generated_files/pin_manager.p1 ${OBJECTDIR}/mcc_generated_files/i2c_master.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/LCD_4x20.p1 ${OBJECTDIR}/teclado_5x4.p1 ${OBJECTDIR}/I2C_lib.p1 ${OBJECTDIR}/RTC_EEPROM.p1 ${OBJECTDIR}/menus.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/mcc_generated_files/examples/i2c_master_example.p1.d ${OBJECTDIR}/mcc_generated_files/tmr1.p1.d ${OBJECTDIR}/mcc_generated_files/device_config.p1.d ${OBJECTDIR}/mcc_generated_files/interrupt_manager.p1.d ${OBJECTDIR}/mcc_generated_files/mcc.p1.d ${OBJECTDIR}/mcc_generated_files/pin_manager.p1.d ${OBJECTDIR}/mcc_generated_files/i2c_master.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/LCD_4x20.p1.d ${OBJECTDIR}/teclado_5x4.p1.d ${OBJECTDIR}/I2C_lib.p1.d ${OBJECTDIR}/RTC_EEPROM.p1.d ${OBJECTDIR}/menus.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/mcc_generated_files/examples/i2c_master_example.p1 ${OBJECTDIR}/mcc_generated_files/tmr1.p1 ${OBJECTDIR}/mcc_generated_files/device_config.p1 ${OBJECTDIR}/mcc_generated_files/interrupt_manager.p1 ${OBJECTDIR}/mcc_generated_files/mcc.p1 ${OBJECTDIR}/mcc_generated_files/pin_manager.p1 ${OBJECTDIR}/mcc_generated_files/i2c_master.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/LCD_4x20.p1 ${OBJECTDIR}/teclado_5x4.p1 ${OBJECTDIR}/I2C_lib.p1 ${OBJECTDIR}/RTC_EEPROM.p1
+OBJECTFILES=${OBJECTDIR}/mcc_generated_files/examples/i2c_master_example.p1 ${OBJECTDIR}/mcc_generated_files/tmr1.p1 ${OBJECTDIR}/mcc_generated_files/device_config.p1 ${OBJECTDIR}/mcc_generated_files/interrupt_manager.p1 ${OBJECTDIR}/mcc_generated_files/mcc.p1 ${OBJECTDIR}/mcc_generated_files/pin_manager.p1 ${OBJECTDIR}/mcc_generated_files/i2c_master.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/LCD_4x20.p1 ${OBJECTDIR}/teclado_5x4.p1 ${OBJECTDIR}/I2C_lib.p1 ${OBJECTDIR}/RTC_EEPROM.p1 ${OBJECTDIR}/menus.p1
 
 # Source Files
-SOURCEFILES=mcc_generated_files/examples/i2c_master_example.c mcc_generated_files/tmr1.c mcc_generated_files/device_config.c mcc_generated_files/interrupt_manager.c mcc_generated_files/mcc.c mcc_generated_files/pin_manager.c mcc_generated_files/i2c_master.c main.c LCD_4x20.c teclado_5x4.c I2C_lib.c RTC_EEPROM.c
+SOURCEFILES=mcc_generated_files/examples/i2c_master_example.c mcc_generated_files/tmr1.c mcc_generated_files/device_config.c mcc_generated_files/interrupt_manager.c mcc_generated_files/mcc.c mcc_generated_files/pin_manager.c mcc_generated_files/i2c_master.c main.c LCD_4x20.c teclado_5x4.c I2C_lib.c RTC_EEPROM.c menus.c
 
 
 
@@ -190,6 +190,14 @@ ${OBJECTDIR}/RTC_EEPROM.p1: RTC_EEPROM.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/RTC_EEPROM.d ${OBJECTDIR}/RTC_EEPROM.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/RTC_EEPROM.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/menus.p1: menus.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/menus.p1.d 
+	@${RM} ${OBJECTDIR}/menus.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mstackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/menus.p1 menus.c 
+	@-${MV} ${OBJECTDIR}/menus.d ${OBJECTDIR}/menus.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/menus.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/mcc_generated_files/examples/i2c_master_example.p1: mcc_generated_files/examples/i2c_master_example.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/mcc_generated_files/examples" 
@@ -286,6 +294,14 @@ ${OBJECTDIR}/RTC_EEPROM.p1: RTC_EEPROM.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mstackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/RTC_EEPROM.p1 RTC_EEPROM.c 
 	@-${MV} ${OBJECTDIR}/RTC_EEPROM.d ${OBJECTDIR}/RTC_EEPROM.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/RTC_EEPROM.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/menus.p1: menus.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/menus.p1.d 
+	@${RM} ${OBJECTDIR}/menus.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mstackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/menus.p1 menus.c 
+	@-${MV} ${OBJECTDIR}/menus.d ${OBJECTDIR}/menus.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/menus.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

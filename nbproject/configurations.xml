@@ -22,6 +22,7 @@
       <itemPath>teclado_5x4.h</itemPath>
       <itemPath>I2C_lib.h</itemPath>
       <itemPath>RTC_EEPROM.h</itemPath>
+      <itemPath>menus.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -48,6 +49,7 @@
       <itemPath>teclado_5x4.c</itemPath>
       <itemPath>I2C_lib.c</itemPath>
       <itemPath>RTC_EEPROM.c</itemPath>
+      <itemPath>menus.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
