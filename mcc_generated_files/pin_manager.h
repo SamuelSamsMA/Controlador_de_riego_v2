@@ -85,6 +85,106 @@
 #define LED_SetAnalogMode()      do { ANSELAbits.ANSA0 = 1; } while(0)
 #define LED_SetDigitalMode()     do { ANSELAbits.ANSA0 = 0; } while(0)
 
+// get/set BOMBA aliases
+#define BOMBA_TRIS                 TRISAbits.TRISA1
+#define BOMBA_LAT                  LATAbits.LATA1
+#define BOMBA_PORT                 PORTAbits.RA1
+#define BOMBA_WPU                  WPUAbits.WPUA1
+#define BOMBA_OD                   ODCONAbits.ODA1
+#define BOMBA_ANS                  ANSELAbits.ANSA1
+#define BOMBA_SetHigh()            do { LATAbits.LATA1 = 1; } while(0)
+#define BOMBA_SetLow()             do { LATAbits.LATA1 = 0; } while(0)
+#define BOMBA_Toggle()             do { LATAbits.LATA1 = ~LATAbits.LATA1; } while(0)
+#define BOMBA_GetValue()           PORTAbits.RA1
+#define BOMBA_SetDigitalInput()    do { TRISAbits.TRISA1 = 1; } while(0)
+#define BOMBA_SetDigitalOutput()   do { TRISAbits.TRISA1 = 0; } while(0)
+#define BOMBA_SetPullup()          do { WPUAbits.WPUA1 = 1; } while(0)
+#define BOMBA_ResetPullup()        do { WPUAbits.WPUA1 = 0; } while(0)
+#define BOMBA_SetPushPull()        do { ODCONAbits.ODA1 = 0; } while(0)
+#define BOMBA_SetOpenDrain()       do { ODCONAbits.ODA1 = 1; } while(0)
+#define BOMBA_SetAnalogMode()      do { ANSELAbits.ANSA1 = 1; } while(0)
+#define BOMBA_SetDigitalMode()     do { ANSELAbits.ANSA1 = 0; } while(0)
+
+// get/set ZONA_1 aliases
+#define ZONA_1_TRIS                 TRISAbits.TRISA2
+#define ZONA_1_LAT                  LATAbits.LATA2
+#define ZONA_1_PORT                 PORTAbits.RA2
+#define ZONA_1_WPU                  WPUAbits.WPUA2
+#define ZONA_1_OD                   ODCONAbits.ODA2
+#define ZONA_1_ANS                  ANSELAbits.ANSA2
+#define ZONA_1_SetHigh()            do { LATAbits.LATA2 = 1; } while(0)
+#define ZONA_1_SetLow()             do { LATAbits.LATA2 = 0; } while(0)
+#define ZONA_1_Toggle()             do { LATAbits.LATA2 = ~LATAbits.LATA2; } while(0)
+#define ZONA_1_GetValue()           PORTAbits.RA2
+#define ZONA_1_SetDigitalInput()    do { TRISAbits.TRISA2 = 1; } while(0)
+#define ZONA_1_SetDigitalOutput()   do { TRISAbits.TRISA2 = 0; } while(0)
+#define ZONA_1_SetPullup()          do { WPUAbits.WPUA2 = 1; } while(0)
+#define ZONA_1_ResetPullup()        do { WPUAbits.WPUA2 = 0; } while(0)
+#define ZONA_1_SetPushPull()        do { ODCONAbits.ODA2 = 0; } while(0)
+#define ZONA_1_SetOpenDrain()       do { ODCONAbits.ODA2 = 1; } while(0)
+#define ZONA_1_SetAnalogMode()      do { ANSELAbits.ANSA2 = 1; } while(0)
+#define ZONA_1_SetDigitalMode()     do { ANSELAbits.ANSA2 = 0; } while(0)
+
+// get/set ZONA_2 aliases
+#define ZONA_2_TRIS                 TRISAbits.TRISA3
+#define ZONA_2_LAT                  LATAbits.LATA3
+#define ZONA_2_PORT                 PORTAbits.RA3
+#define ZONA_2_WPU                  WPUAbits.WPUA3
+#define ZONA_2_OD                   ODCONAbits.ODA3
+#define ZONA_2_ANS                  ANSELAbits.ANSA3
+#define ZONA_2_SetHigh()            do { LATAbits.LATA3 = 1; } while(0)
+#define ZONA_2_SetLow()             do { LATAbits.LATA3 = 0; } while(0)
+#define ZONA_2_Toggle()             do { LATAbits.LATA3 = ~LATAbits.LATA3; } while(0)
+#define ZONA_2_GetValue()           PORTAbits.RA3
+#define ZONA_2_SetDigitalInput()    do { TRISAbits.TRISA3 = 1; } while(0)
+#define ZONA_2_SetDigitalOutput()   do { TRISAbits.TRISA3 = 0; } while(0)
+#define ZONA_2_SetPullup()          do { WPUAbits.WPUA3 = 1; } while(0)
+#define ZONA_2_ResetPullup()        do { WPUAbits.WPUA3 = 0; } while(0)
+#define ZONA_2_SetPushPull()        do { ODCONAbits.ODA3 = 0; } while(0)
+#define ZONA_2_SetOpenDrain()       do { ODCONAbits.ODA3 = 1; } while(0)
+#define ZONA_2_SetAnalogMode()      do { ANSELAbits.ANSA3 = 1; } while(0)
+#define ZONA_2_SetDigitalMode()     do { ANSELAbits.ANSA3 = 0; } while(0)
+
+// get/set ZONA_3 aliases
+#define ZONA_3_TRIS                 TRISAbits.TRISA4
+#define ZONA_3_LAT                  LATAbits.LATA4
+#define ZONA_3_PORT                 PORTAbits.RA4
+#define ZONA_3_WPU                  WPUAbits.WPUA4
+#define ZONA_3_OD                   ODCONAbits.ODA4
+#define ZONA_3_ANS                  ANSELAbits.ANSA4
+#define ZONA_3_SetHigh()            do { LATAbits.LATA4 = 1; } while(0)
+#define ZONA_3_SetLow()             do { LATAbits.LATA4 = 0; } while(0)
+#define ZONA_3_Toggle()             do { LATAbits.LATA4 = ~LATAbits.LATA4; } while(0)
+#define ZONA_3_GetValue()           PORTAbits.RA4
+#define ZONA_3_SetDigitalInput()    do { TRISAbits.TRISA4 = 1; } while(0)
+#define ZONA_3_SetDigitalOutput()   do { TRISAbits.TRISA4 = 0; } while(0)
+#define ZONA_3_SetPullup()          do { WPUAbits.WPUA4 = 1; } while(0)
+#define ZONA_3_ResetPullup()        do { WPUAbits.WPUA4 = 0; } while(0)
+#define ZONA_3_SetPushPull()        do { ODCONAbits.ODA4 = 0; } while(0)
+#define ZONA_3_SetOpenDrain()       do { ODCONAbits.ODA4 = 1; } while(0)
+#define ZONA_3_SetAnalogMode()      do { ANSELAbits.ANSA4 = 1; } while(0)
+#define ZONA_3_SetDigitalMode()     do { ANSELAbits.ANSA4 = 0; } while(0)
+
+// get/set POZO aliases
+#define POZO_TRIS                 TRISAbits.TRISA5
+#define POZO_LAT                  LATAbits.LATA5
+#define POZO_PORT                 PORTAbits.RA5
+#define POZO_WPU                  WPUAbits.WPUA5
+#define POZO_OD                   ODCONAbits.ODA5
+#define POZO_ANS                  ANSELAbits.ANSA5
+#define POZO_SetHigh()            do { LATAbits.LATA5 = 1; } while(0)
+#define POZO_SetLow()             do { LATAbits.LATA5 = 0; } while(0)
+#define POZO_Toggle()             do { LATAbits.LATA5 = ~LATAbits.LATA5; } while(0)
+#define POZO_GetValue()           PORTAbits.RA5
+#define POZO_SetDigitalInput()    do { TRISAbits.TRISA5 = 1; } while(0)
+#define POZO_SetDigitalOutput()   do { TRISAbits.TRISA5 = 0; } while(0)
+#define POZO_SetPullup()          do { WPUAbits.WPUA5 = 1; } while(0)
+#define POZO_ResetPullup()        do { WPUAbits.WPUA5 = 0; } while(0)
+#define POZO_SetPushPull()        do { ODCONAbits.ODA5 = 0; } while(0)
+#define POZO_SetOpenDrain()       do { ODCONAbits.ODA5 = 1; } while(0)
+#define POZO_SetAnalogMode()      do { ANSELAbits.ANSA5 = 1; } while(0)
+#define POZO_SetDigitalMode()     do { ANSELAbits.ANSA5 = 0; } while(0)
+
 // get/set LCD_EN aliases
 #define LCD_EN_TRIS                 TRISAbits.TRISA6
 #define LCD_EN_LAT                  LATAbits.LATA6

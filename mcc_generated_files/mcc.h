@@ -55,6 +55,7 @@
 #include "interrupt_manager.h"
 #include "i2c_master.h"
 #include "tmr1.h"
+#include "memory.h"
 
 
 
